@@ -15,7 +15,7 @@ int main() {
         int thread_id = omp_get_thread_num();
         int actual_num_threads = omp_get_num_threads();
         double sum = 0.0;
-        for (int i = thread_id * (num_steps/actual_num_threads); i < thread_id * (num_steps/actual_num_threads) + (num_steps/actual_num_threads); i++) {
+        for (int i = thread_id * (num_steps/actual_num_threads); i < (thread_id + 1) *(num_steps/actual_num_threads); i++) {
             double x = (i + 0.5) * step;
             sum += (4.0/(1.0 + x*x)) * step;
         }
